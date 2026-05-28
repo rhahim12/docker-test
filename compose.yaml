@@ -1,0 +1,17 @@
+services:
+  web:
+    build: ./web
+    ports:
+      - "8080:80"
+    environment:
+      DATABASE_HOST: bdd
+      DATABASE_NAME: ma-bdd
+      DATABASE_USER: root
+      DATABASE_PASS: root
+    depends_on:
+      - bdd
+  bdd:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: ma-bdd
+      MYSQL_ROOT_PASSWORD: root
